@@ -1,0 +1,16 @@
+Data bindng - shareing data inside a component
+
+1 one way binding
+
+html -> ts or ts-> html
+
+ts- component
+html-view
+
+1.1 component to view (ts-> html)
+ a   string interpolation -{{expression}}
+ b  property binding -[attribute name]="property"
+
+ 1.2  view to component (html -> ts)
+ a event binding -(event name )="fuction name()"
+ b event binding using $(event)- (event name)= "fuction name ($event)"
