@@ -3,3 +3,15 @@
 body {
     background-color: rgb(160, 167, 164);
 }
+.child{
+    display:inline-flex;
+    padding: 100px;
+    margin-top: -100px;
+    margin-left: -10px;
+
+}@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/regular.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+ 
+@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';

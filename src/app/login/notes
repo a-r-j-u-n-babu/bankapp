@@ -14,3 +14,43 @@ html-view
  1.2  view to component (html -> ts)
  a event binding -(event name )="fuction name()"
  b event binding using $(event)- (event name)= "fuction name ($event)"
+ c event binding using template referencing variable - #variable name 
+
+ 2 two way binding 
+
+ Angular Routing 
+ -to set path for a component
+ {
+    path:value , component:class Name
+ }
+
+ use <Routing-outlet></Routing-outlet> inside root componend
+
+ Dependancy Injection 
+ ...................
+
+ To share data between departdent classes
+
+Angular services
+................
+ ng g s serviceName
+
+ Angular directives
+ ....................
+ to manipulate DOM elements
+
+ a, component directives
+
+ b, structural directives
+     1, ngFor
+
+Angular Forms
+............
+a, template driven Forms(first design html) -for page design
+
+b, model driven forms(first ts file-> html design) - for main adv vaildation  methods
+  1, reactive forms
+    form group, array,control.
+      -we can directly add vaildation methods
+      -add vaildation
+      -import reactive form modules
