@@ -43,6 +43,7 @@ Angular services
 
  b, structural directives
      1, ngFor
+     2, ngIF - use for vaildation
 
 Angular Forms
 ............
@@ -54,3 +55,16 @@ b, model driven forms(first ts file-> html design) - for main adv vaildation  me
       -we can directly add vaildation methods
       -add vaildation
       -import reactive form modules
+
+      Local storage
+        -setItem
+        -getItem
+        -removeItem
+        
+Parent Child relationship
+ Parent to Child communication -@input()
+ child ti Parent communication - @output()
+
+ Angular Pipes
+    {{value-expression  | date [:format [timezone ]]}}
+

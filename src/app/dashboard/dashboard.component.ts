@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -7,6 +8,8 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+
  //login name display
   user = "";
  
@@ -19,14 +22,22 @@ export class DashboardComponent implements OnInit {
   amount1 = '';
   acno1 = '';
   pswd1 = '';
+
+  //date and time 
+  systemDate: any;
  
 
   
-  constructor(private ds: DataService) { 
-    this.user=this.ds.currentUser
+  constructor(private ds: DataService, private router:Router) { 
+    this.user = this.ds.currentUser
+    this.systemDate = new Date();
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { //to change the when logout the back use on the site bug
+    if (!localStorage.getItem("currentacno")) {
+      alert("please login first");
+      this.router.navigateByUrl("");
+    }
   }
   deposit() {
 
@@ -49,4 +60,21 @@ export class DashboardComponent implements OnInit {
       alert(`${amount} is debited .. balance :${result}`);
     }
   }
+  logout()
+  {
+    //remove  login and user name
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentacno');
+
+    //navigate to login page
+    this.router.navigateByUrl('');
+  }
+  delete() {
+    this.acno = JSON.parse(localStorage.getItem('currentacno')||'');
+  }
+  OnCancel() {
+    this.acno = "";
+  }
+
 }
+

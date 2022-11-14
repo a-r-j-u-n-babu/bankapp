@@ -4,20 +4,57 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
-//login name display
+  //login name display
   currentUser: any;
 
   //login acno display
   currentacno: any;
 
   userDetails: any = { //object of objects
-    1000: { acno: 1000, username: 'arjun', password: 1000, balance: 20000,transaction:[] },
+    1000: { acno: 1000, username: 'arjun', password: 1000, balance: 20000, transaction: [] },
     1001: { acno: 1001, username: 'akhil', password: 1001, balance: 20000, transaction: [] },
     1002: { acno: 1002, username: 'aju', password: 1002, balance: 30000, transaction: [] },
     1003: { acno: 1003, username: 'babu', password: 1003, balance: 430000, transaction: [] },
 
   }
-  constructor() { }
+  constructor() { 
+    this.getDetails() //function call
+  }
+
+  //saveDetails() -to store data in the localstorage
+
+  saveDetails() {
+    if (this.userDetails) {
+      localStorage.setItem('dataBase', JSON.stringify(this.userDetails))
+    }
+    if (this.currentacno) {
+      localStorage.setItem('currentacno', JSON.stringify(this.currentacno))
+    }
+    if (this.currentUser) {
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser))
+    }
+  }
+
+  //getDetsils( ) -to get the data from the local storage 
+
+  getDetails() {
+    if (localStorage.getItem('dataBase')) {
+      this.userDetails = JSON.parse(localStorage.getItem('dataBase') || '');
+  }
+}
+  getCurrentUser() {
+    if (localStorage.getItem('currentUser')) {
+      this.userDetails = JSON.parse(localStorage.getItem('currentUser') || '');
+  }
+  }
+  getCurrentAcno() {
+    if (localStorage.getItem('currentacno')) {
+      this.userDetails = JSON.parse(localStorage.getItem('currentacno') || '');
+    }
+  }
+
+
+
   siginup(acno: any, username: any, password: any) {
     let userDetails = this.userDetails;
     if (acno in userDetails) {
@@ -35,7 +72,7 @@ export class DataService {
        
       }
       console.log(userDetails);
-      
+      this.saveDetails(); //functuion called
       return true;
     }
   
@@ -48,6 +85,7 @@ export class DataService {
         this.currentUser=this.userDetails[acno]["username"]
         // alert('login successfull')
         this.currentacno = acno;
+        this.saveDetails(); //functuion call
         return true;
 
       }
@@ -73,7 +111,7 @@ export class DataService {
           amount
         })
         console.log(userDetails);
-        
+        this.saveDetails(); //functuion call
         return userDetails[acno]["balance"];
       }
       else {
@@ -100,6 +138,7 @@ export class DataService {
             amount
           })
           console.log(userDetails);
+          this.saveDetails(); //functuion call
           return userDetails[acno]['balance'];
         }
         else {

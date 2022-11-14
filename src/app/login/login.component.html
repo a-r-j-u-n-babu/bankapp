@@ -11,16 +11,23 @@
     <div class="col-4"></div>
     <div class="col-4">
 
-        <form action="" class="border border-dark m-5 p-5 ">
+        <form [formGroup]="loginForm" action="" class="border border-dark m-5 p-5 ">
             <h1 class="text-center">sbi bank <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
                     fill="currentColor" class="bi bi-bank2" viewBox="0 0 16 16">
                     <path
                         d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916l-7.5-5zM12.375 6v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1H.5z" />
                 </svg></h1>
                <h6>{{aim}}</h6> 
-            <input [(ngModel)]="acno" type="number" id="usernameb"  name="acno" class="form-control mt-3" [placeholder]="accounts">
-            <input [(ngModel)]="pswd" type="password" id="passwordb" name="pswd" class="form-control mt-3" placeholder="Password">
-            <a href="">Forgot password?</a>
+            <input formControlName="acno" type="text" id="usernameb"  name="acno" class="form-control mt-3" [placeholder]="accounts">
+            <div *ngIf="this.loginForm.get('acno')?.touched&& this.loginForm.get('acno')?.errors" style="color:red;">Invaild
+                AC</div>
+
+           
+                <input formControlName="pswd" type="password" id="passwordb" name="pswd" class="form-control mt-3" placeholder="Password">
+                        <div *ngIf="this.loginForm.get('pswd')?.touched&& this.loginForm.get('pswd')?.errors" style="color:red;">Invaild
+                            password</div>
+
+                <a href="">Forgot password?</a>
             or 
             <a routerLink="siginup">signup</a>
             <input type="button" (click)="login() " value="login" class="btn btn-success mt-4" >

@@ -27,7 +27,7 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="#">Dont touch</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -45,11 +45,21 @@
         <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
-<div class="parend">
+
+    <input type="button" class="btn btn-success" value="Logout" (click)="logout()" style="float:right ;">
+   
+    <input type="button" class="btn btn-danger"  value="Delete" (click)="delete()" style="float:right ;">
+
+    <app-delete [item]="acno" (click)="OnCancel()"></app-delete>
+<!-- <h4>System Date and Time:{{systemDate}}</h4> -->
+<!-- indian standerd time -->
+<h4>System Date and Time:{{systemDate | date}}</h4>
+<div class="parent" [ngClass]="acno? 'style1':''">
+
    <h1>Welcome {{user}}</h1>
-</div>
-<div class="child">
-<div class="row">
+
+     <div class="child">
+        <div class="row">
     <!-- <div class="col-4"></div> -->
     <!-- <div class="col-4"> -->
 
@@ -96,7 +106,7 @@
     </form>
 </div>
     
-
+</div>
 
 
 <!-- href="./index.html"> -->
