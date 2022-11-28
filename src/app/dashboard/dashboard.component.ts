@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
 
   //date and time 
   systemDate: any;
+  acno2: any;
  
 
   
@@ -70,7 +71,7 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl('');
   }
   delete() {
-    this.acno = JSON.parse(localStorage.getItem('currentacno')||'');
+    this.acno2 = JSON.parse(localStorage.getItem('currentacno')||'');
   }
   OnCancel() {
     this.acno = "";

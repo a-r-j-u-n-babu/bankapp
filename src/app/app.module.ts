@@ -25,6 +25,7 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TransactionComponent } from './transaction/transaction.component';
 import { DeleteComponent } from './delete/delete.component';
+import {HttpClientModule} from '@angular/common/http'
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { DeleteComponent } from './delete/delete.component';
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
 
   ],
   providers: [],

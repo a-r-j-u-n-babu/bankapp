@@ -38,7 +38,7 @@ export class SiginupComponent implements OnInit {
     var acno = this.registerForm.value.acno;
     var pswd = this.registerForm.value.pswd;
 
-    const result = this.ds.siginup(acno, uname, pswd);
+    const result = this.ds.siginup(uname,acno,pswd);
     // var userDetails = this.ds.userDetails;
 
     if (result) {

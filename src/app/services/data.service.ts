@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -17,7 +18,7 @@ export class DataService {
     1003: { acno: 1003, username: 'babu', password: 1003, balance: 430000, transaction: [] },
 
   }
-  constructor() { 
+  constructor(private http:HttpClient) { 
     this.getDetails() //function call
   }
 

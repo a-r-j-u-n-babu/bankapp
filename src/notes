@@ -68,3 +68,7 @@ Parent Child relationship
  Angular Pipes
     {{value-expression  | date [:format [timezone ]]}}
 
+frontend and backend Integration
+ import HTTPClientModule - for creating http request 
+ inject HTTPClient
+ using HTTPClientModule - for making api requests

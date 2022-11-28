@@ -50,11 +50,11 @@
    
     <input type="button" class="btn btn-danger"  value="Delete" (click)="delete()" style="float:right ;">
 
-    <app-delete [item]="acno" (click)="OnCancel()"></app-delete>
+    <app-delete [item]="acno2" (click)="OnCancel()"></app-delete>
 <!-- <h4>System Date and Time:{{systemDate}}</h4> -->
 <!-- indian standerd time -->
 <h4>System Date and Time:{{systemDate | date}}</h4>
-<div class="parent" [ngClass]="acno? 'style1':''">
+<div class="parent" [ngClass]="acno2? 'style1':''">
 
    <h1>Welcome {{user}}</h1>
 
@@ -72,7 +72,7 @@
             <input [(ngModel)]="amount" type="text" id=" dep-username" name="amount" class="form-control mt-3"
                 placeholder=" Amount">
 
-            <input [(ngModel)]="acno" type="number" id="dep-acno" name="acno" class="form-control mt-3"
+            <input [(ngModel)]="acno" type="text" id="dep-acno" name="acno" class="form-control mt-3"
                 placeholder="Account Number">
             <input [(ngModel)]="pswd" type="password" id="dep-password" name="pswd" class="form-control mt-3"
                 placeholder="Password">
@@ -96,7 +96,7 @@
         <input [(ngModel)]="amount1" type="text" id=" wid-username" name="amount1" class="form-control mt-3"
             placeholder=" Amount">
 
-        <input [(ngModel)]="acno1" type="number" id="wid-acno" name="acno" class="form-control mt-3"
+        <input [(ngModel)]="acno1" type="text" id="wid-acno" name="acno" class="form-control mt-3"
             placeholder="Account Number">
         <input [(ngModel)]="pswd1" type="password" id="wid-password" name="pswd" class="form-control mt-3"
             placeholder="Password">
