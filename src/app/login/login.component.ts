@@ -54,13 +54,22 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       var acno = this.loginForm.value.acno;
       var pswd = this.loginForm.value.pswd;
-      const result = this.ds.login(acno, pswd);
-      if (result) {
-        alert("login successfully");
-        this.router.navigateByUrl("dashboard");
-      }
-    } else {
-      console.log(this.loginForm.get('acno')?.errors);
+      const result = this.ds.login(acno, pswd)
+       .subscribe((result:any) => {
+          alert(result.message);
+          this.ds.navigateByUrl('dashboard')
+       },
+        result => {
+          alert(result.errors.message);
+          this.router.navigateByUrl('login')
+         }
+       )
+  //     if (result) {
+  //       alert("login successfully");
+  //       this.router.navigateByUrl("dashboard");
+  //     }
+  //   } else {
+  //     console.log(this.loginForm.get('acno')?.errors);
       
     }
   }

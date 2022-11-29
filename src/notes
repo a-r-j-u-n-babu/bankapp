@@ -66,9 +66,16 @@ Parent Child relationship
  child ti Parent communication - @output()
 
  Angular Pipes
-    {{value-expression  | date [:format [timezone ]]}}
+    {{value-expression  | date [:format [timezone]] }}
 
 frontend and backend Integration
  import HTTPClientModule - for creating http request 
  inject HTTPClient
  using HTTPClientModule - for making api requests
+
+ Asynchronous call
+  rxjs - reactive extension for javascript  -using in frondend typescript
+  to solve asynchronous request event ,
+ 1. observable (Alternavtive of promise)
+     1, resolve -subscribe()
+     2, reject - catch()

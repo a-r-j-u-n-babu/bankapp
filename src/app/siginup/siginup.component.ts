@@ -38,19 +38,29 @@ export class SiginupComponent implements OnInit {
     var acno = this.registerForm.value.acno;
     var pswd = this.registerForm.value.pswd;
 
-    const result = this.ds.siginup(uname,acno,pswd);
+      const result = this.ds.siginup(uname, acno, pswd)
+        .subscribe((result:any) => {
+          alert(result.message);
+          this.ds.navigateByUrl('')
+        },
+          result => {
+            alert(result.errors.message);
+            this.router.navigateByUrl('siginup')
+          }
+        
+      )
     // var userDetails = this.ds.userDetails;
 
-    if (result) {
-      alert("successfully registered")
-      this.router.navigateByUrl('')
-    }
-    else {
-      alert("something went wrong")
-    }
-    }
-    else {
-      console.log(this.registerForm.get('uname')?.errors);
+//     if (result) {
+//       alert("successfully registered")
+//       this.router.navigateByUrl('')
+//     }
+//     else {
+//       alert("something went wrong")
+//     }
+//     }
+    // else {
+    //   console.log(this.registerForm.get('uname')?.errors);
      
     }
   }

@@ -5,6 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
+  navigateByUrl(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
   //login name display
   currentUser: any;
 
@@ -18,7 +21,7 @@ export class DataService {
     1003: { acno: 1003, username: 'babu', password: 1003, balance: 430000, transaction: [] },
 
   }
-  constructor(private http:HttpClient) { 
+  constructor(private http:HttpClient) {  //http injection
     this.getDetails() //function call
   }
 
@@ -53,54 +56,69 @@ export class DataService {
       this.userDetails = JSON.parse(localStorage.getItem('currentacno') || '');
     }
   }
-
-
-
+  //register api request
   siginup(acno: any, username: any, password: any) {
-    let userDetails = this.userDetails;
-    if (acno in userDetails) {
-      return false;
+    const data = {
+      acno,
+      password,
+      username
+      
     }
-    else {
-      userDetails[acno] = {
-        acno,
-        username,
-        password,
-        balance: 0,
-        transaction: [],
+   return this.http.post('http://localhost:3000/siginup',data)
+}
+
+
+  // siginup(acno: any, username: any, password: any) {
+  //   let userDetails = this.userDetails;
+  //   if (acno in userDetails) {
+  //     return false;
+  //   }
+  //   else {
+  //     userDetails[acno] = {
+  //       acno,
+  //       username,
+  //       password,
+  //       balance: 0,
+  //       transaction: [],
         
       
        
-      }
-      console.log(userDetails);
-      this.saveDetails(); //functuion called
-      return true;
-    }
+  //     }
+  //     console.log(userDetails);
+  //     this.saveDetails(); //functuion called
+  //     return true;
+  //   }
   
-  }
+  // }
 
   login(acno: any, pswd: any) {
-    let userDetails = this.userDetails;
-    if (acno in userDetails) {
-      if (pswd == userDetails[acno]["password"]) {
-        this.currentUser=this.userDetails[acno]["username"]
-        // alert('login successfull')
-        this.currentacno = acno;
-        this.saveDetails(); //functuion call
-        return true;
-
-      }
-      else {
-        alert("incorrect Password")
-        return false;
-      }
+    const data = {
+      acno,
+      pswd
     }
-    else {
-      alert('invaild user')
-      return false;
-    }
-    
+    return this.http.post('http://localhost:3000/siginup',data)
   }
+    // let userDetails = this.userDetails;
+    // if (acno in userDetails) {
+    //   if (pswd == userDetails[acno]["password"]) {
+    //     this.currentUser=this.userDetails[acno]["username"]
+    //     // alert('login successfull')
+    //     this.currentacno = acno;
+    //     this.saveDetails(); //functuion call
+    //     return true;
+
+    //   }
+    //   else {
+    //     alert("incorrect Password")
+    //     return false;
+    //   }
+    // }
+    // else {
+    //   alert('invaild user')
+    //   return false;
+    // }
+    
+  // }
   deposit(amt: any, acno: any, pswd: any) {
     var userDetails = this.userDetails;
     var amount = parseInt(amt); //to add amound to bal
