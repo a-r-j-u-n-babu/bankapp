@@ -50,7 +50,7 @@
    
     <input type="button" class="btn btn-danger"  value="Delete" (click)="delete()" style="float:right ;">
 
-    <app-delete [item]="acno2" (click)="OnCancel()"></app-delete>
+    <app-delete [item]="acno2" (click)="OnCancel()" (onDelete)="onDelete($event)"></app-delete>
 <!-- <h4>System Date and Time:{{systemDate}}</h4> -->
 <!-- indian standerd time -->
 <h4>System Date and Time:{{systemDate | date}}</h4>

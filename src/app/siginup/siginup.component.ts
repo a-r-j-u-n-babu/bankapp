@@ -16,9 +16,9 @@ export class SiginupComponent implements OnInit {
   // pswd = "";
 // register model 
   registerForm = this.fb.group({//model
-    uname: ['',[Validators.required,Validators.pattern('[a-zA-Z]*')]],//array
+    username: ['',[Validators.required,Validators.pattern('[a-zA-Z]*')]],//array
     acno: ['', [Validators.required, Validators.pattern('[0-9]*')]],
-    pswd: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]], //(*)regural expression
+    password: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]], //(*)regural expression
 
     //control  goes to register .html
 
@@ -34,11 +34,11 @@ export class SiginupComponent implements OnInit {
       
     
     
-    var uname = this.registerForm.value.uname;
+    var username = this.registerForm.value.username;
     var acno = this.registerForm.value.acno;
-    var pswd = this.registerForm.value.pswd;
+    var password = this.registerForm.value.password;
 
-      const result = this.ds.siginup(uname, acno, pswd)
+       this.ds.siginup(username, acno, password)
         .subscribe((result:any) => {
           alert(result.message);
           this.ds.navigateByUrl('')

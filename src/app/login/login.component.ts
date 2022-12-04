@@ -54,10 +54,13 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       var acno = this.loginForm.value.acno;
       var pswd = this.loginForm.value.pswd;
-      const result = this.ds.login(acno, pswd)
-       .subscribe((result:any) => {
+     this.ds.login(acno, pswd)
+        .subscribe((result: any) => {
+          localStorage.setItem('currentUser', JSON.stringify(result.currentUser))
+          localStorage.setItem('currentacno', JSON.stringify(result.currentacno))
+          localStorage.setItem('token', JSON.stringify(result.token)) 
           alert(result.message);
-          this.ds.navigateByUrl('dashboard')
+          this.ds.navigateByUrl("dashboard")
        },
         result => {
           alert(result.errors.message);
@@ -74,27 +77,27 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  sigin() {
-    // alert('login cilcked ')
-    var acno = this.acno;
-    var pswd = this.pswd;
+  // sigin() {
+  //   // alert('login cilcked ')
+  //   var acno = this.acno;
+  //   var pswd = this.pswd;
 
-    var userDetails = this['userDetails'];
+  //   var userDetails = this['userDetails'];
 
-    if (acno in userDetails) {
-      if (pswd ==userDetails[acno]['password']) {
-        alert("Login Successfully");
-        this.router.navigateByUrl("dashboard")
-      }
-      else {
-        alert("Incorrect Password")
-      }
-    }
-    else {
-      alert("User Does Not Exits");
+  //   if (acno in userDetails) {
+  //     if (pswd ==userDetails[acno]['password']) {
+  //       alert("Login Successfully");
+  //       this.router.navigateByUrl("dashboard")
+  //     }
+  //     else {
+  //       alert("Incorrect Password")
+  //     }
+  //   }
+  //   else {
+  //     alert("User Does Not Exits");
       
-    }
-  }
+  //   }
+  // }
 }
 // sigin(a:any,p:any) {
 //   // alert('login cilcked ')
